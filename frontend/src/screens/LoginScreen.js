@@ -45,7 +45,7 @@ const LoginScreen = ({ location, history }) => {
 
   return (
     <>
-      <Meta title='ProShop | Login' />
+      <Meta title='Epic House | Login' />
       <FormContainer>
         <h1>Sign In</h1>
         {error && <Message variant='danger'>{error}</Message>}

@@ -22,7 +22,7 @@ const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand><img src={'https://cdn.dribbble.com/users/60166/screenshots/11359169/media/c2d063818dbd5ebf63090df2d2f070d0.jpg?compress=1&resize=400x300'}  alt={'Epic House'}/></Navbar.Brand>
+            <Navbar.Brand>MERNShop</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>

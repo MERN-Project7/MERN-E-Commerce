@@ -39,7 +39,7 @@ const CartScreen = ({ match, history, location }) => {
   };
   return (
     <>
-      <Meta title='Pro Shopping Cart' />
+      <Meta title='Cart' />
       <Row>
         <Col md={8}>
           <h1>Shopping Cart</h1>

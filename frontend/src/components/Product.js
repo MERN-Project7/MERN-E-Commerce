@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
-import Rating from './Rating';
 
-const Product = ({ product, match, history }) => {
+const Product = ({ product, history }) => {
     const [qty, setQty] = useState(1);
-    const [id, setId] = useState({});
-
+    const addToCartHandler = (pID) => {
+        const id = pID.target.value
+        console.log(id)
+        history.push(`/cart/${id}?qty=${qty}`);
+    };
 
   return (
     <Card className='my-3 p-3 rounded'>
@@ -23,18 +25,44 @@ const Product = ({ product, match, history }) => {
         </Link>
 
         <Card.Text as='div'>
-          <div className='my-3'>
-            <Rating
-              value={product.rating}
-              text={`${product.numReviews} reviews`}
-            />
+          <div className='my-1'>
+            {product.description.slice(0, 37)}...
           </div>
         </Card.Text>
 
-        <Card.Text as='h3'>${product.price}</Card.Text>
+          <Card.Text as='h3'>${product.price}</Card.Text>
+
+          <Form.Control
+              as='select'
+              size={"sm"}
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+              custom
+          >
+              {[...Array(product.countInStock).keys()].map(
+                  (x) => (
+                      <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                      </option>
+                  )
+              )}
+          </Form.Control>
+
+          <Button
+              size={'sm'}
+              onClick={addToCartHandler}
+              className='mt-2'
+              value={product._id}
+              type='button'
+              active={product.countInStock > 0}
+              disabled={product.countInStock === 0}
+          >
+              Add To Cart
+          </Button>
+
       </Card.Body>
     </Card>
   );
 };
 
-export default Product;
+export default withRouter(Product);
